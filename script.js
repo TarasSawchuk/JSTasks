@@ -141,15 +141,14 @@ function daySummary(data, day) {
 
     if(!daysArr.includes(day)) {
         console.log("Wrong input");
+        return
     }
 
-    for(keyYear in data) {
-        let year = keyYear;
-        for(keyMounth in data[keyYear]) {
-            let mounth = keyMounth;
-            for(keyDays in data[keyYear][keyMounth]){
+    for(let keyYear in data) {
+        for(let keyMounth in data[keyYear]) {
+            for(let keyDays in data[keyYear][keyMounth]){
                 let days = keyDays,
-                    detaIteration = new Date(year+","+mounth+","+days);
+                    detaIteration = new Date(keyYear+","+keyMounth+","+keyDays);
                     dayIteratiion = detaIteration.getDay();
 
                 if(inputDay === dayIteratiion) {
@@ -158,22 +157,21 @@ function daySummary(data, day) {
             }
         }
     }
-
-    console.log(sum);
+   return sum;
 }
 
-daySummary(data, "Tuesday");
+daySummary(data, "Tuaaay");
 //
-// // Task 2
+// // // Task 2
 // // You have div's structure - check index html. There is click event listener on the deepest div
-// const clicker = document.getElementById('clicker');
-// clicker.addEventListener('click', function (e) {
-//     console.log('Clicker clicked!');
-//
-//     // here you need to trigger function that goes through parent nodes and change the ones with class target color to #00ffff
-//     paintParentTargets(e.target);
-// });
-//
-// function paintParentTargets(element) {
-//     // Advice - use while loop for iteration. Parent can be accessed through node's parentNode property
-// }
+const clicker = document.getElementById('clicker');
+clicker.addEventListener('click', function (e) {
+    console.log('Clicker clicked!');
+
+    // here you need to trigger function that goes through parent nodes and change the ones with class target color to #00ffff
+    paintParentTargets(e.target);
+});
+
+function paintParentTargets(element) {
+    // Advice - use while loop for iteration. Parent can be accessed through node's parentNode property
+}
